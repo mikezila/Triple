@@ -7,8 +7,24 @@ namespace Triple
     class SpriteSheet
     {
         private Texture2D sheet;
-        private int spriteWidth;
-        private int spriteHeight;
+        public int SpriteWidth { get; private set; }
+        public int SpriteHeight { get; private set; }
+
+        public int ScaledWidth
+        {
+            get
+            {
+                return (int)(SpriteWidth * ScaleX);
+            }
+        }
+
+        public int ScaledHeight
+        {
+            get
+            {
+                return (int)(SpriteHeight * ScaleY);
+            }
+        }
 
         public float ScaleX { get; set; }
         public float ScaleY { get; set; }
@@ -33,15 +49,15 @@ namespace Triple
         {
             get
             {
-                return new Point((int)Math.Floor(spriteWidth * ScaleX), (int)Math.Floor(spriteHeight * ScaleY));
+                return new Point((int)Math.Floor(SpriteWidth * ScaleX), (int)Math.Floor(SpriteHeight * ScaleY));
             }
         }
 
         public SpriteSheet(Texture2D sheet, int spriteWidth, int spriteHeight)
         {
             this.sheet = sheet;
-            this.spriteHeight = spriteHeight;
-            this.spriteWidth = spriteWidth;
+            this.SpriteHeight = spriteHeight;
+            this.SpriteWidth = spriteWidth;
 
             ScaleX = ScaleY = 1.0f;
 
@@ -57,12 +73,12 @@ namespace Triple
         public void Draw(SpriteBatch batch, int spriteID, int x, int y)
         {
             // Sheet is 28 cards wide
-            int sheetX = (spriteID % spritesWide) * spriteWidth;
-            int sheetY = (spriteID / spritesWide) * spriteHeight;
+            int sheetX = (spriteID % spritesWide) * SpriteWidth;
+            int sheetY = (spriteID / spritesWide) * SpriteHeight;
 
-            Rectangle rect = new Rectangle(sheetX, sheetY, spriteWidth, spriteHeight);
+            Rectangle rect = new Rectangle(sheetX, sheetY, SpriteWidth, SpriteHeight);
 
-            batch.Draw(sheet, new Rectangle(x, y, (int)Math.Floor(spriteWidth * ScaleX), (int)Math.Floor(spriteHeight * ScaleY)), rect, Color.White);
+            batch.Draw(sheet, new Rectangle(x, y, (int)Math.Floor(SpriteWidth * ScaleX), (int)Math.Floor(SpriteHeight * ScaleY)), rect, Color.White);
         }
     }
 }

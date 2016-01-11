@@ -111,7 +111,14 @@ namespace Triple
                 }
 
                 // Draw this cell's card art
-                Assets.Cards.Draw(Batch, board.Cards.Cards[board.playedCards[i]].spriteID, PointForCell(i));
+                Assets.Cards.Draw(Batch, board.Cardset.Cards[board.playedCards[i]].spriteID, PointForCell(i));
+
+                // Draw the cards power digits using shittacular fonts I found on Google
+                // Drawn in NSEW order
+                Assets.Digits.Draw(Batch, board.GetPlayedCard(i).North, PointForCell(i).X + (Assets.Cards.ScaledWidth / 2) - (Assets.Digits.ScaledWidth / 2), PointForCell(i).Y);
+                Assets.Digits.Draw(Batch, board.GetPlayedCard(i).South, PointForCell(i).X + (Assets.Cards.ScaledWidth / 2) - (Assets.Digits.ScaledWidth / 2), PointForCell(i).Y + (Assets.Cards.ScaledHeight - Assets.Digits.ScaledHeight));
+                Assets.Digits.Draw(Batch, board.GetPlayedCard(i).East, PointForCell(i).X + Assets.Cards.ScaledWidth - Assets.Digits.ScaledWidth, PointForCell(i).Y + (Assets.Cards.ScaledHeight / 2 - (Assets.Digits.ScaledHeight / 2)));
+                Assets.Digits.Draw(Batch, board.GetPlayedCard(i).West, PointForCell(i).X, PointForCell(i).Y + (Assets.Cards.ScaledHeight / 2 - (Assets.Digits.ScaledHeight / 2)));
             }
             Batch.End();
         }

@@ -23,13 +23,18 @@ namespace Triple
         public Player[] controllingPlayer { get; private set; }
 
         // The card set to use
-        public CardSet Cards { get; private set; }
+        public CardSet Cardset { get; private set; }
 
         public Board()
         {
             playedCards = new int[9];
             controllingPlayer = new Player[9];
-            Cards = new CardSet();
+            Cardset = new CardSet();
+        }
+
+        public Card GetPlayedCard(int cell)
+        {
+            return Cardset.Cards[playedCards[cell]];
         }
 
         Random rand = new Random();

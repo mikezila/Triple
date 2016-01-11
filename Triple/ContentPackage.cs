@@ -1,9 +1,4 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
@@ -13,13 +8,15 @@ namespace Triple
     class ContentPackage
     {
         // Audio
-        public Song Music { get; private set; }
+        public Song Tetra { get; private set; }
+        public Song Triple { get; private set; }
         public SoundEffect Sfx { get; private set; }
 
         // Graphics
         public SpriteSheet Cards { get; private set; }
         public SpriteSheet Blue { get; private set; }
         public SpriteSheet Red { get; private set; }
+        public SpriteSheet Digits { get; private set; }
         public Texture2D Background { get; private set; }
         public Texture2D Cursor { get; private set; }
 
@@ -35,7 +32,8 @@ namespace Triple
         public void LoadContent()
         {
             // Audio
-            Music = Content.Load<Song>("music2");
+            Tetra = Content.Load<Song>("music2");
+            Triple = Content.Load<Song>("music");
             Sfx = Content.Load<SoundEffect>("sfx_cursor");
 
             // Graphics
@@ -44,6 +42,7 @@ namespace Triple
             Cards = new SpriteSheet(Content.Load<Texture2D>("cards"), cardSize, cardSize);
             Blue = new SpriteSheet(Content.Load<Texture2D>("blue"), cardSize, cardSize);
             Red = new SpriteSheet(Content.Load<Texture2D>("red"), cardSize, cardSize);
+            Digits = new SpriteSheet(Content.Load<Texture2D>("digits"), 16, 32);
 
             // Settings
             // Magic numbers I don't give a fuuuuuuuuuuck

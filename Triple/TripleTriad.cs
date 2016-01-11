@@ -77,19 +77,14 @@ namespace Triple
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && oldKeyboardState.IsKeyUp(Keys.Space))
             {
-                //playField.Shuffle();
-                playField.DatTrain();
-                foreach(int ID in playField.playedCards)
-                {
-                    Console.WriteLine(ID);
-                }
+                playField.Shuffle();
                 assets.Sfx.Play();
             }
 
 
             if (MediaPlayer.State != MediaState.Playing)
             {
-                //MediaPlayer.Play(assets.Music);
+                MediaPlayer.Play(assets.Triple);
             }
 
             //playField.Shuffle();
