@@ -28,7 +28,7 @@ namespace Triple
 
         public ContentPackage(ContentManager content)
         {
-            this.Content = content;
+            Content = content;
         }
 
         const int cardSize = 64;

@@ -80,7 +80,7 @@ namespace Triple
                         return cellPoint;
                     }
                 default:
-                    throw new Exception("Bad cell number " + cell);
+                    throw new Exception("Bad cell number: " + cell);
             }
         }
 
@@ -95,19 +95,22 @@ namespace Triple
             DrawBackground();
             for (int i = 0; i < 9; i++)
             {
+                // Draw red/blue background
                 switch (board.controllingPlayer[i])
                 {
                     case Board.Player.Blue:
-                        Assets.Blue.Draw(Batch, 1, PointForCell(i));
+                        Assets.Blue.Draw(Batch, 0, PointForCell(i));
                         break;
                     case Board.Player.Red:
-                        Assets.Red.Draw(Batch, 1, PointForCell(i));
+                        Assets.Red.Draw(Batch, 0, PointForCell(i));
                         break;
                     case Board.Player.None:
                         continue;
                     default:
                         throw new Exception("Invalid Player Color." + board.controllingPlayer[i]);
                 }
+
+                // Draw this cell's card art
                 Assets.Cards.Draw(Batch, board.Cards.Cards[board.playedCards[i]].spriteID, PointForCell(i));
             }
             Batch.End();

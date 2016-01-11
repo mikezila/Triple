@@ -16,6 +16,7 @@ namespace Triple
         SpriteBatch spriteBatch;
         ContentPackage assets;
         RenderManager renderer;
+        Board playField;
 
         public TripleTriad()
         {
@@ -23,7 +24,7 @@ namespace Triple
             graphics.PreferredBackBufferHeight = 500;
             graphics.PreferredBackBufferWidth = 500;
             graphics.ApplyChanges();
-            this.IsMouseVisible = true;
+            IsMouseVisible = true;
             Content.RootDirectory = "Content";
         }
 
@@ -46,7 +47,6 @@ namespace Triple
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
         /// </summary>
-        Board playField;
         protected override void LoadContent()
         {
             assets.LoadContent();
@@ -77,8 +77,8 @@ namespace Triple
 
             if (Keyboard.GetState().IsKeyDown(Keys.Space) && oldKeyboardState.IsKeyUp(Keys.Space))
             {
-                playField.Shuffle();
-                Console.WriteLine();
+                //playField.Shuffle();
+                playField.DatTrain();
                 foreach(int ID in playField.playedCards)
                 {
                     Console.WriteLine(ID);
@@ -89,10 +89,10 @@ namespace Triple
 
             if (MediaPlayer.State != MediaState.Playing)
             {
-                MediaPlayer.Play(assets.Music);
+                //MediaPlayer.Play(assets.Music);
             }
 
-            playField.Shuffle();
+            //playField.Shuffle();
 
             oldKeyboardState = Keyboard.GetState();
 

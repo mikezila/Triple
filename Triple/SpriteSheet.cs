@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using System;
 
 namespace Triple
 {
@@ -15,6 +12,9 @@ namespace Triple
 
         public float ScaleX { get; set; }
         public float ScaleY { get; set; }
+
+        // How wide the sheet is, in number of sprites.
+        private int spritesWide;
 
         public Vector2 Scale
         {
@@ -44,6 +44,9 @@ namespace Triple
             this.spriteWidth = spriteWidth;
 
             ScaleX = ScaleY = 1.0f;
+
+            spritesWide = sheet.Width / spriteWidth;
+            Console.WriteLine(spritesWide);
         }
 
         public void Draw(SpriteBatch batch, int spriteID, Point location)
@@ -54,8 +57,8 @@ namespace Triple
         public void Draw(SpriteBatch batch, int spriteID, int x, int y)
         {
             // Sheet is 28 cards wide
-            int sheetX = (spriteID % 28) * spriteWidth;
-            int sheetY = (spriteID / 28) * spriteHeight;
+            int sheetX = (spriteID % spritesWide) * spriteWidth;
+            int sheetY = (spriteID / spritesWide) * spriteHeight;
 
             Rectangle rect = new Rectangle(sheetX, sheetY, spriteWidth, spriteHeight);
 

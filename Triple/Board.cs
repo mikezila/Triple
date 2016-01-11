@@ -42,6 +42,17 @@ namespace Triple
             }
         }
 
+        // Fills the board with Doomtarin
+        // Just for testing to make sure that spritesheets are working
+        public void DatTrain()
+        {
+            for(int i = 0;i<9;i++)
+            {
+                playedCards[i] = 97;
+                controllingPlayer[i] = Player.Red;
+            }
+        }
+
         public int CheckCellCard(int cell)
         {
             return playedCards[cell];
