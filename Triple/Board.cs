@@ -125,6 +125,9 @@ namespace Triple
         {
             Card playedCard = cardset[cardID];
 
+            playedCards[cell] = playedCard;
+            controllingPlayer[cell] = player;
+
             // Cells 012
             //       345
             //       678
@@ -175,8 +178,6 @@ namespace Triple
                     break;
                 default:
                     throw new ArgumentOutOfRangeException("Somehow attacking from an invalid cell.  Good going champ.");
-
-
             }
         }
     }

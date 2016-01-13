@@ -57,6 +57,11 @@ namespace Triple
                 North = South = East = West = 10;
                 Element = CardElement.None;
             }
-        }  
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

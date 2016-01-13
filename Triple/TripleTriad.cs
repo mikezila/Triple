@@ -70,6 +70,8 @@ namespace Triple
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         KeyboardState oldKeyboardState;
+        Board.Player player = Board.Player.Blue;
+        Random rand = new Random();
         protected override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
@@ -81,8 +83,17 @@ namespace Triple
                 assets.Sfx.Play();
             }
 
+            if (Keyboard.GetState().IsKeyDown(Keys.Z))
+            {
+                playField.PlayCard(rand.Next(0, 9), rand.Next(1, 111), player);
 
-            playField.Shuffle();
+                if (player == Board.Player.Blue)
+                    player = Board.Player.Red;
+                else
+                    player = Board.Player.Blue;
+
+                //assets.Sfx.Play();
+            }
 
             oldKeyboardState = Keyboard.GetState();
 
