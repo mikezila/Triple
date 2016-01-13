@@ -111,7 +111,7 @@ namespace Triple
                 }
 
                 // Draw this cell's card art
-                Assets.Cards.Draw(Batch, board.Cardset.Cards[board.playedCards[i]].spriteID, PointForCell(i));
+                Assets.Cards.Draw(Batch, board.playedCards[i].spriteID, PointForCell(i));
 
                 // Draw the cards power digits using shittacular fonts I found on Google
                 // Drawn in NSEW order

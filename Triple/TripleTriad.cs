@@ -82,12 +82,7 @@ namespace Triple
             }
 
 
-            if (MediaPlayer.State != MediaState.Playing)
-            {
-                MediaPlayer.Play(assets.Triple);
-            }
-
-            //playField.Shuffle();
+            playField.Shuffle();
 
             oldKeyboardState = Keyboard.GetState();
 

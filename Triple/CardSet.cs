@@ -8,7 +8,15 @@ namespace Triple
 {
     class CardSet
     {
-        public Dictionary<int, Card> Cards { get; private set; }
+        private Dictionary<int, Card> Cards { get; set; }
+
+        public Card this[int cardID]
+        {
+            get
+            {
+                return Cards[cardID];
+            }
+        }
 
         public CardSet()
         {
