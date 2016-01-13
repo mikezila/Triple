@@ -62,7 +62,6 @@ namespace Triple
             ScaleX = ScaleY = 1.0f;
 
             spritesWide = sheet.Width / spriteWidth;
-            Console.WriteLine(spritesWide);
         }
 
         public void Draw(SpriteBatch batch, int spriteID, Point location)

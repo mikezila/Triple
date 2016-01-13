@@ -38,7 +38,7 @@ namespace Triple
         {
             // TODO: Add your initialization logic here
             MediaPlayer.Volume = 0.5f;
-            assets = new ContentPackage(this.Content);
+            assets = new ContentPackage(Content);
             playField = new Board();
             base.Initialize();
         }
@@ -74,6 +74,9 @@ namespace Triple
         Random rand = new Random();
         protected override void Update(GameTime gameTime)
         {
+            //if (MediaPlayer.State == MediaState.Stopped)
+            //    MediaPlayer.Play(assets.Tetra);
+
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
@@ -83,17 +86,9 @@ namespace Triple
                 assets.Sfx.Play();
             }
 
-            if (Keyboard.GetState().IsKeyDown(Keys.Z))
-            {
-                playField.PlayCard(rand.Next(0, 9), rand.Next(1, 111), player);
+            playField.PlayCard(rand.Next(0, 9), rand.Next(1, 111), player);
 
-                if (player == Board.Player.Blue)
-                    player = Board.Player.Red;
-                else
-                    player = Board.Player.Blue;
-
-                //assets.Sfx.Play();
-            }
+            player = player == Board.Player.Blue ? Board.Player.Red : Board.Player.Blue;
 
             oldKeyboardState = Keyboard.GetState();
 
